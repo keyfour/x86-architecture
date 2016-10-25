@@ -35,22 +35,27 @@
 
 ## Segmented Addressing
 
+There is possible to use *segmented addressing* - a form of addressing where a program may have many
+independent address spaces, called **segments**. For example, a program can keep its code (instructions) and stack
+in separate segments. Code addresses would always refer to the code space, and stack addresses would always
+refer to the stack space.
 
+> Segment-register:Byte-address
 
 ## Registers
-
-
 
 #Instructions
 
 #Appendix of Tables
 
-* [Table 1.](#table-1-bit-and-byte-order--csv-) Bit and Byte Order 
+* [Table 1. Bit and Byte Order](#table-1-bit-and-byte-order--csv-) 
 
 #References
 
-1. Intel® 64 and IA-32 Architectures Software Developer’s Manual [[pdf][1]]
+1. [Intel® 64 and IA-32 Architectures Software Developer’s Manual][1] (PDF)
+2. [The Real, Protected, Long mode assembly tutorial for PCs][4]
 
 [1]: http://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-manual-325462.pdf "Intel® 64 and IA-32 Architectures Software Developer’s Manual"
 [2]: http://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-optimization-manual.pdf "Intel® 64 and IA-32 Architectures Optimization Reference Manual"
 [3]: tables/bit_and_byte_order.csv "Bit and Byte Order download"
+[4]: http://www.codeproject.com/Articles/45788/The-Real-Protected-Long-mode-assembly-tutorial-for "The Real, Protected, Long mode assembly tutorial for PCs"
