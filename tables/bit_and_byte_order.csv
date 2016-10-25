@@ -1,0 +1,11 @@
+"Highest Address","32  24","23  16","15  8","7  0","← Bit Offset"
+"","Byte 31","Byte 30","Byte 29"," Byte 28",28
+"","Byte 27","Byte 26","Byte 25"," Byte 24",24
+"","Byte 23","Byte 22","Byte 21"," Byte 20",20
+"","Byte 19","Byte 18","Byte 17"," Byte 16",16
+"","Byte 15","Byte 14","Byte 13"," Byte 12",12
+"","Byte 11","Byte 10","Byte 9"," Byte 8",8
+"","Byte 7","Byte 6","Byte 5"," Byte 4",4
+"","Byte 3","Byte 2","Byte 1"," Byte 0",0
+"","","","","","↑ Byte Offset","Lowest Address"
+
