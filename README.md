@@ -8,6 +8,8 @@
 
 * [Basic Architecture](#basic-architecture)
     * [Bit and Byte Order](#bit-and-byte-order)
+    * [Segmented Adressing](#segmented-addressing)
+    * [Modes of Operations](#modes-of-operations)
 * [Appendix of Tables](#appendix-of-tables)
 * [References](#references)
                                                                
@@ -41,6 +43,38 @@ in separate segments. Code addresses would always refer to the code space, and s
 refer to the stack space.
 
 > Segment-register:Byte-address
+
+## Modes of Operations
+
+### Protected Mode
+
+This mode is the native state of the processor.  A segment can have any size, from 1 byte to 4GB.
+The OS defines the size of each segment, and now each segment can have limitations (read, write, execute on or off).
+This allows the OS to "protect" the memory. In addition, there are 4 levels of authority (0 to 3, 0 = highest), so,
+for example, when a user application runs in level 3, it cannot touch the OS which runs at level 0. Among the
+capabilities of protected mode is the ability to directly execute “real-address mode” 8086 software in a protected,
+multi-tasking environment. This feature is called virtual-8086 mode, although it is not actually a processor mode.
+Virtual-8086 mode is actually a protected mode attribute that can be enabled for any task.
+
+### Real-address Mode
+
+This mode implements the programming environment of the Intel 8086 processor with
+extensions (such as the ability to switch to protected or system management mode).
+The processor is placed in real-address mode following power-up or a reset. In Real mode,
+everything is 16 bits. The entire memory is not accessed with an absolute index from 0,
+but it is divided into segments. Each segment represents the actual offset from 0,
+multiplied by 16. To this segment, an offset value can be added to refer to a distance
+from the start of this segment
+
+### System Management Mode
+
+This mode provides an operating system or executive with a transparent mechanism for
+implementing platform-specific functions such as power management and system security.
+The processor enters SMM when the external SMM interrupt pin (SMI#) is activated or an SMI is
+received from the advanced programmable interrupt controller (APIC).
+In SMM, the processor switches to a separate address space while saving the basic context of the currently
+running program or task. SMM-specific code may then be executed transparently. Upon returning from SMM,
+the processor is placed back into its state prior to the system management interrupt.
 
 ## Registers
 
