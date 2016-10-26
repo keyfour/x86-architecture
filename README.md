@@ -10,6 +10,7 @@
     * [Bit and Byte Order](#bit-and-byte-order)
     * [Segmented Adressing](#segmented-addressing)
     * [Modes of Operations](#modes-of-operations)
+    * [Memory Models](#memory-models)
 * [Appendix of Tables](#appendix-of-tables)
 * [References](#references)
                                                                
@@ -75,6 +76,91 @@ received from the advanced programmable interrupt controller (APIC).
 In SMM, the processor switches to a separate address space while saving the basic context of the currently
 running program or task. SMM-specific code may then be executed transparently. Upon returning from SMM,
 the processor is placed back into its state prior to the system management interrupt.
+
+## Memory Models
+
+The linear address space can be paged when using the flat or segmented model.
+
+### Flat memory model
+
+                                   ┌────────────────┐
+                                   │                │
+                                   │                │
+     Linear Address                │                │
+    ┌────────────────┐             ├────────────────┤
+    │                ├────────────▶│                │
+    └────────────────┘             ├────────────────┤
+                                   │                │
+                                   │                │
+                          Linear   │                │
+                          Address  │                │
+                          Space    │                │
+                                   └────────────────┘
+
+Memory appears to a program as a single, continuous address space. Code, data, and stacks
+are all contained in this address space.
+
+### Segmented memory model
+
+                                                                                       ┌────────────────┐
+                                                                                       │                │
+                                                                                       │                │
+                                                                ┌─────────────────────▶│                │
+                                                                │                      │                │
+                                                                │                      ├────────────────┤
+                                                                │                      │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+                                                        ┌───────┴────────┐             │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+                                                        │                │             ├────────────────┤
+                                                        │                │             │                │
+                                                   ┌────┴───────────┐    │     ┌──────▶│                │
+                                                   │                │    │     │       │                │
+                                       Segments    │                │    │     │       │                │
+                                              ┌────┴───────────┐    ├────┘     │       ├────────────────┤
+                                              │                │    ├──────────┘       │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+                                              │                │    │                  │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+                Offset (effective address)    │                ├────┘                  ├────────────────┤
+               ┌────────────────┐             ├────────────────┤             Linear    │                │
+               │                ├────────────▶│                │             Address   │                │
+    Logical    └────────────────┘             ├────────────────┤             Space     │                │
+    Address                                   │                │                       ├────────────────┤
+                Segment Selector              │                ├──────────────────────▶│                │
+               ┌────────────────┐             │                │                       ├────────────────┤
+               │                ├────────────▶└────────────────┘                       │                │
+               └────────────────┘                                                      └────────────────┘
+
+Memory appears to a program as a group of independent address spaces
+called segments. Code, data, and stacks are typically contained in separate segments. To address a byte in a
+segment, a program issues a logical address. This consists of a segment selector and an offset (logical
+addresses are often referred to as far pointers). The segment selector identifies the segment to be accessed
+and the offset identifies a byte in the address space of the segment.
+
+### Real-address mode memory model
+
+                                                            ┌────────────────┐
+                                                            │                │
+                                                            │                │
+                                                            │                │
+                                                            │                │
+                                                            ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┤
+                                                            │                │
+                                                            │                │
+                                             Linear Address │                │
+                                             Space Devided  │                │
+                Offset (effective address)   Into Equals    ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┤
+               ┌────────────────┐            Sized Segments ├────────────────┤
+               │                ├──────────────────────────▶│                │
+    Logical    └────────────────┘                           ├────────────────┤
+    Address                                                 │                │
+                Segment Selector                      ┌────▶├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┤
+               ┌────────────────┐                     │     │                │
+               │                ├─────────────────────┘     │                │
+               └────────────────┘                           │                │
+                                                            │                │
+                                                            └────────────────┘
+
+The real-address mode uses a specific implementation of segmented memory in which the linear address space for the
+program and the operating system/executive consists of an array of segments of up to 64 KBytes in size each.
+The maximum size of the linear address space in real-address mode is 2²° bytes.
 
 ## Registers
 
