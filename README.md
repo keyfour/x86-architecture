@@ -11,6 +11,7 @@
     * [Segmented Adressing](#segmented-addressing)
     * [Modes of Operations](#modes-of-operations)
     * [Memory Models](#memory-models)
+    * [Registers](#registers)
 * [Appendix of Tables](#appendix-of-tables)
 * [References](#references)
                                                                
@@ -164,11 +165,40 @@ The maximum size of the linear address space in real-address mode is 2²° bytes
 
 ## Registers
 
+### General-purpose registers
+
+The 32-bit general-purpose registers EAX, EBX, ECX, EDX, ESI, EDI, EBP, and ESP are provided for holding the
+following items:
+
+* Operands for logical and arithmetic operations
+* Operands for address calculations
+* Memory pointers
+
+#### Table 2. General-purpose registers [ [csv][5] ]
+
+| 31 16 | 15 8 | 7 0 | 16-bit | 32-bit | Special uses (32-bit)                     |
+|-------|------|-----|--------|--------|-------------------------------------------|
+|       | AH   | AL  | AX     | EAX    | Accumulator for operands and results data |
+|       | BH   | BL  | BX     | EBX    | Pointer to data in the DS segment         |
+|       | CH   | CL  | CX     | ECX    | Counter for string and loop operations    |
+|       | DH   | DL  | DX     | EDX    | I/O pointer                               |
+
+#### Table 3. General-purpose registers [ [csv][6] ]
+
+| 31 0 | 15 0 | 32-bit | Special uses                                                                                                                  |
+|------|------|--------|-------------------------------------------------------------------------------------------------------------------------------|
+|      | BP   | EBP    | Pointer to data on the stack (in the SS segment)                                                                              |
+|      | SI   | ESI    | Pointer to data in the segment pointed to by the DS register; <br>source pointer for string operations                        |
+|      | DI   | EDI    | Pointer to data (or destination) in the segment pointed to by <br>the ES register; destination pointer for string operations  |
+|      | SP   | ESP    | Stack pointer (in the SS segment)                                                                                             |
+
 #Instructions
 
 #Appendix of Tables
 
 * [Table 1. Bit and Byte Order](#table-1-bit-and-byte-order--csv-) 
+* [Table 2. General-purpose registers](#table-2-general-purpose-registers--csv-)
+* [Table 3. General-purpose registers](#table-3-general-purpose-registers--csv-)
 
 #References
 
@@ -179,3 +209,5 @@ The maximum size of the linear address space in real-address mode is 2²° bytes
 [2]: http://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-optimization-manual.pdf "Intel® 64 and IA-32 Architectures Optimization Reference Manual"
 [3]: tables/bit_and_byte_order.csv "Bit and Byte Order download"
 [4]: http://www.codeproject.com/Articles/45788/The-Real-Protected-Long-mode-assembly-tutorial-for "The Real, Protected, Long mode assembly tutorial for PCs"
+[5]: tables/gen_purp_registers_part_1.csv "General-purpose registers"
+[6]: tables/gen_purp_registers_part_2.csv "General-purpose registers"
