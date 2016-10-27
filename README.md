@@ -22,6 +22,7 @@
         * [Real-address mode memory model](#real-address-mode-memory-model)
     * [Registers](#registers)
         * [General-purpose registers](#general-purpose-registers)
+        * [Segment Registers](#segment-registers)
 * [Appendix of Tables](#appendix-of-tables)
 * [References](#references)
                                                                
@@ -201,6 +202,80 @@ following items:
 |      | SI   | ESI    | Pointer to data in the segment pointed to by the DS register; <br>source pointer for string operations                        |
 |      | DI   | EDI    | Pointer to data (or destination) in the segment pointed to by <br>the ES register; destination pointer for string operations  |
 |      | SP   | ESP    | Stack pointer (in the SS segment)                                                                                             |
+
+### Segment Registers
+
+The segment registers (CS, DS, SS, ES, FS, and GS) hold 16-bit segment selectors. A segment selector is a special
+pointer that identifies a segment in memory. To access a particular segment in memory, the segment selector for
+that segment must be present in the appropriate segment register.
+
+                                               Linear Address
+                                              Space for Program
+                                              ┌────────────────┐
+                                              │                │
+                                              │                │
+                                              │   Overlapping  │
+    Segment Registers                         │    Segments    │
+    ┌────────────────┐                        │    of up to    │
+    ├────────────────┤CS ────┐                │    4 GBytes    │
+    ├────────────────┤DS ────┤                │  Beginning at  │
+    ├────────────────┤SS ────┤                │    Address 0   │
+    ├────────────────┤ES ────┤                │                │
+    ├────────────────┤FS ────┤                │                │
+    └────────────────┘GS ────┴───────────────▶└────────────────┘
+
+When using the flat (unsegmented) memory model, segment registers are loaded with segment
+selectors that point to overlapping segments, each of which begins at address 0 of the linear address space.
+These overlapping segments then comprise the linear address space for the program. Typically, two
+overlapping segments are defined: one for code and another for data and stacks. The CS segment register points
+to the code segment and all the other segment registers point to the data and stack segment.
+
+                                         ┌────────────────┐
+                                         │  Code Segment  │
+                                         │  ┌─────────────┴──┐
+                                         │  │  Data Segment  │
+                                         │  │  ┌─────────────┴──┐
+    Segment Registers                    │  │  │ Stack Segment  │
+    ┌────────────────┐            ┌─────▶└──┤  │                │
+    ├────────────────┤CS ─────────┘         │  │                │
+    ├────────────────┤DS ──────────────────▶└──┤                │
+    ├────────────────┤SS ────────────────┐     │                │
+    ├────────────────┤ES ─────────────┐  └────▶└────────────────┘
+    ├────────────────┤FS ─────────┐   │
+    └────────────────┘GS ─────┐   │   │  ┌────────────────┐
+                              │   │   │  │  Data Segment  │
+                              │   │   │  │  ┌─────────────┴──┐
+                              │   │   │  │  │  Data Segment  │
+                              │   │   │  │  │  ┌─────────────┴──┐
+                              │   │   │  │  │  │ Data Segment   │
+                              │   │   └─▶└──┤  │                │
+                              │   │         │  │                │
+                              │   └────────▶└──┤                │
+                              │                │                │
+                              └───────────────▶└────────────────┘
+
+When using the segmented memory model, each segment register is ordinarily loaded with a different segment
+selector so that each segment register points to a different segment within the linear address space.
+At any time, a program can thus access up to six segments in the linear address space. To access a
+segment not pointed to by one of the segment registers, a program must first load the segment selector for the
+segment to be accessed into a segment register.
+
+Each of the segment registers is associated with one of three types of storage: code, data, or stack.
+
+The register contains the segment selector for the **code segment**, where the instructions being executed are
+stored. The processor fetches instructions from the code segment, using a logical address that consists of the
+segment selector in the CS register and the contents of the EIP register. The EIP register contains the offset within
+the code segment of the next instruction to be executed. The CS register cannot be loaded explicitly by an application
+program. Instead, it is loaded implicitly by instructions or internal processor operations that change program
+control (such as, procedure calls, interrupt handling, or task switching).
+
+The DS, ES, FS, and GS registers point to four **data segments**. The availability of four data segments permits
+efficient and secure access to different types of data structures.
+
+The SS register contains the segment selector for the stack **segment**, where the procedure stack is stored for the
+program, task, or handler currently being executed. All stack operations use the SS register to find the stack
+segment. Unlike the CS register, the SS register can be loaded explicitly, which permits application programs to set
+up multiple stacks and switch among them.
 
 #Instructions
 
