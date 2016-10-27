@@ -6,12 +6,22 @@
     ██╔╝ ██╗╚█████╔╝╚██████╔╝      ██║  ██║██║  ██║╚██████╗██║  ██║
     ╚═╝  ╚═╝ ╚════╝  ╚═════╝       ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
 
+# Contents
+
 * [Basic Architecture](#basic-architecture)
     * [Bit and Byte Order](#bit-and-byte-order)
+        * [Data Structure](#data-structure)
     * [Segmented Adressing](#segmented-addressing)
     * [Modes of Operations](#modes-of-operations)
+        * [Protected Mode](#protected-mode)
+        * [Real-address Mode](#real-address-mode)
+        * [System Management Mode](#system-management-mode)
     * [Memory Models](#memory-models)
+        * [Flat memory model](#flat-memory-model)
+        * [Segmented memory model](#segmented-memory-model)
+        * [Real-address mode memory model](#real-address-mode-memory-model)
     * [Registers](#registers)
+        * [General-purpose registers](#general-purpose-registers)
 * [Appendix of Tables](#appendix-of-tables)
 * [References](#references)
                                                                
