@@ -277,6 +277,10 @@ program, task, or handler currently being executed. All stack operations use the
 segment. Unlike the CS register, the SS register can be loaded explicitly, which permits application programs to set
 up multiple stacks and switch among them.
 
+### EFLAGS Register
+
+
+
 #Instructions
 
 #Appendix of Tables

@@ -1,0 +1,33 @@
+Bit Offset,Value,Name,Type,Description
+31,0,Reserved,"",""
+30,0,Reserved,"",""
+29,0,Reserved,"",""
+28,0,Reserved,"",""
+27,0,Reserved,"",""
+26,0,Reserved,"",""
+25,0,Reserved,"",""
+24,0,Reserved,"",""
+23,0,Reserved,"",""
+22,0,Reserved,"",""
+21,ID,ID Flag,System,
+20,VIP,Virtual Interrupt Pending,System,
+19,VIF,Virtual Interrupt Flag,System,
+18,AC,Aligment Control/Access Control,System,
+17,VM,Virtual-8086 Mode,System,
+16,RF,Resume Flag,System,
+15,0,Reserved,"",""
+14,NT,Nested Task,System,
+13,IOPL,I/O Privilege Level,System
+12,"","","",""
+11,OF,Overflow Flag,Status,"Set if the integer result is too large a positive number or too small a negative number (excluding the sign-bit) to fit in the destination operand; cleared otherwise. This flag indicates an overflow condition for signed-integer (two’s complement) arithmetic."
+10,DF,Direction Flag,Control,"Setting the DF flag causes the string instructions to auto-decrement (to process strings from high addresses to low addresses). Clearing the DF flag causes the string instructions to auto-increment (process strings from low addresses to high addresses)."
+9,IF,Interrupt Enable Flag,System,
+8,TF,Trap Flag,System,
+7,SF,Sign Flag,Status,"Set equal to the most-significant bit of the result, which is the sign bit of a signed integer. (0 indicates a positive value and 1 indicates a negative value.)"
+6,ZF,Zero Flag,Status,"Set if the result is zero; cleared otherwise."
+5,0,Reserved,"",""
+4,AF,Auxiliary Carry Flag,Status,"Set if an arithmetic operation generates a carry or a borrow out of bit 3 of the result; cleared otherwise. This flag is used in binary-coded decimal (BCD) arithmetic."
+3,0,Reserved,"",""
+2,PF,Parity Flag,Status,"Set if the least-significant byte of the result contains an even number of 1 bits;cleared otherwise."
+1,0,Reserved,"",""
+0,CF,Carry Flag,Status,"Set if an arithmetic operation generates a carry or a borrow out of the mostsignificant bit of the result; cleared otherwise.This flag indicates an overflow condition forunsigned-integer arithmetic.It is also used in multiple-precision arithmetic."
