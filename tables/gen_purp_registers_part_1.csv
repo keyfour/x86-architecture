@@ -1,0 +1,6 @@
+"31 16","15 8","7 0","16-bit","32-bit","Special uses (32-bit)"
+"","AH","AL","AX","EAX","Accumulator for operands and results data"
+"","BH","BL","BX","EBX","Pointer to data in the DS segment"
+"","CH","CL","CX","ECX","Counter for string and loop operations"
+"","DH","DL","DX","EDX","I/O pointer"
+

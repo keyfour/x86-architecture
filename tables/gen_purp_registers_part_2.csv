@@ -1,0 +1,5 @@
+"31 0","15 0","32-bit","Special Uses"
+"","BP","EBP","Pointer to data on the stack (in the SS segment)"
+"","SI","ESI","Pointer to data in the segment pointed to by the DS register; <br>source pointer for string operations"
+"","DI","EDI","Pointer to data (or destination) in the segment pointed to by <br>the ES register; destination pointer for string operations"
+"","SP","ESP","Stack pointer (in the SS segment)"
