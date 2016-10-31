@@ -10,8 +10,18 @@
 
 ## Compile
 
-> make
+```Bash
+make
+```
 
 ## Clean
 
-> make clean
+```bash
+make clean
+```
+
+## Run on Android Device
+
+```Bash
+export ADB=$PATH_TO_YOUR_ADB; ./run_on_android.sh ascii_art_hello_world
+```
