@@ -4,7 +4,7 @@
 #
 
 ##Change your adb path
-ADB=/usr/bin/adb
+[[ "$ADB" ]] || ADB=/usr/bin/adb
 
 [[ "$1" ]] || { echo "Usage: ./run_on_android.sh [executable file]" && exit 1; }
 
