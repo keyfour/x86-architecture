@@ -52,3 +52,4 @@ dkms.conf
 
 #Output files
 ascii_art_hello_world
+ascii_art_printf_hello_world
