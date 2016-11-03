@@ -16,12 +16,12 @@ message:
 .text
 .global _start
 _start:
-    mov %eax, 4
-    mov %ebx, 1
-    mov %ecx, OFFSET FLAT:message
-    mov %edx, length
-    int 0x80
+    mov %eax, 4                   # system call number (sys_write)
+    mov %ebx, 1                   # file descriptor (stdout)
+    mov %ecx, OFFSET FLAT:message # store in ECX message address
+    mov %edx, length              # store in EDX message length
+    int 0x80                      # system call
 
-    mov %eax, 1
-    xor %ebx, %ebx
-    int 0x8
+    mov %eax, 1                   # sytem call number (sys_exit)
+    xor %ebx, %ebx                # store 0 in EBX
+    int 0x80                      # systen call
