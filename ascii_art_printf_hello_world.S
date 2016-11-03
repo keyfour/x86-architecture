@@ -18,11 +18,11 @@ message:
 .text
 .global main
 main:
-    sub %esp, 4
-	lea %eax, message
-	mov [%esp], %eax
-	call printf
-	add %esp, 4
-	ret
+    sub %esp, 4       # allocate 4 bytes in stack
+    lea %eax, message # store in EAX message address
+    mov [%esp], %eax  # push message address to stack
+    call printf       # call printf function
+    add %esp, 4       # free 4 bytes in stack
+    ret               # return from main
 
 
