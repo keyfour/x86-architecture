@@ -76,6 +76,6 @@ make clean
      ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀       ▀▀       ▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀   ▀
 
 
-[1]: mailto://keyfour13@gmail.com  "Aleksandr Karpov keyfour13@gmail.com"
+[1]: mailto:keyfour13@gmail.com  "Aleksandr Karpov keyfour13@gmail.com"
 [2]: ascii_art_hello_world.S "Source"
 [3]: ascii_art_printf_hello_world.S "Source"
