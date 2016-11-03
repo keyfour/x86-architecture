@@ -16,8 +16,8 @@ Why ASCII Art and not just traditional string? I don't know. Just for fun!
 
 There are two examples written on x86 assembly language for GNU assembler:
 
-* ascii_art_hello_world.S
-* ascii_art_printf_hello_world.S
+* ascii_art_hello_world.Si [ [src][2] ]
+* ascii_art_printf_hello_world.S [ [src][3] ]
 
 ## Compile
 
@@ -77,3 +77,5 @@ make clean
 
 
 [1]: mailto://keyfour13@gmail.com  "Aleksandr Karpov keyfour13@gmail.com"
+[2]: ascii_art_hello_world.S "Source"
+[3]: ascii_art_printf_hello_world.S "Source"
